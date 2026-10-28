@@ -53,7 +53,7 @@ The site must never advertise a version the registries do not have.
    `.size`. This is the authoritative tarball size.
 4. Propagate that number everywhere it appears — monorepo `README.md`,
    `js/CHANGELOG.md`, `js/scripts/wordcount.md`, and this site's
-   `home.chase` §03 — then **pack once more** (the CHANGELOG is inside the
+   `home.chase` §04 (measurements) — then **pack once more** (the CHANGELOG is inside the
    tarball) and confirm the number is stable.
 5. Commit the monorepo, push `main`.
 6. Tag `v<version>`, `rust/v<version>`, `go/v<version>` on that same commit;

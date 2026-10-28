@@ -69,10 +69,10 @@
   {#if template === 'home'}
   <div class="section-strip" aria-label="Page sections">
     <div class="shell section-strip-inner">
-      <a href="#why">Why Lima</a>
+      <a href="#why">Guarantees</a>
       <a href="#why-not">Why not</a>
-      <a href="#measure">Measurements</a>
       <a href="#security">Security</a>
+      <a href="#measure">Measurements</a>
       <a href="#packages">Packages</a>
     </div>
   </div>

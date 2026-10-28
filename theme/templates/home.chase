@@ -14,7 +14,7 @@
       <div class="shell hero-inner">
         <div>
           <h1>Frontmatter,<br><em>specified.</em></h1>
-          <p class="lede">Lima is a small data format with a complete specification, matching TypeScript, Rust, and Go implementations, and none of YAML&rsquo;s unused machinery.</p>
+          <p class="lede">Lima is a small data format for frontmatter in which every line has one meaning &mdash; written down in a complete specification, the same in TypeScript, Rust, and Go, and with none of YAML&rsquo;s unused machinery.</p>
           <div class="hero-actions">
             <a class="btn-primary" href="/docs/guide/">Get started</a>
             <a class="btn-link" href="/packages/">Installation</a>
@@ -33,33 +33,33 @@
       <div class="shell status-inner">
         <div class="stat"><span class="stat-label">Conformance status</span><span class="stat-value">ALL IMPLEMENTATIONS PASS</span></div>
         <div class="stat"><span class="stat-label">Core 1.1</span><span class="stat-value">336 cases</span></div>
-        <div class="stat"><span class="stat-label">References 2.0</span><span class="stat-value">136 cases</span></div>
+        <div class="stat"><span class="stat-label">Differential test</span><span class="stat-value">200,000 parses / run</span></div>
         <div class="stat"><span class="stat-label">Supply chain</span><span class="stat-value">0 dependencies</span></div>
       </div>
     </aside>
 
-    <!-- Why Lima -->
+    <!-- Guarantees -->
     <section class="section" id="why" aria-labelledby="why-h">
       <div class="shell layout">
-        <p class="kicker">01 / Why Lima</p>
+        <p class="kicker">01 / Guarantees</p>
         <div>
-          <h2 id="why-h">Less language.<br>Fewer surprises.</h2>
-          <p class="intro">Fifteen lines of frontmatter do not need every feature of a general-purpose serialization format. Lima makes the small language the whole language.</p>
+          <h2 id="why-h">Every line.<br>One meaning.</h2>
+          <p class="intro">Fifteen lines of frontmatter deserve the same answer everywhere. Lima writes that answer down &mdash; grammar, types, limits, and errors &mdash; and three independent implementations show that they give it.</p>
           <div class="reasons">
             <article class="reason">
               <span class="reason-no">01</span>
-              <h3>Complete specification</h3>
-              <p>The grammar, data model, limits, diagnostics, and API behaviour are written down &mdash; not inferred from one implementation.</p>
+              <h3>Nothing lost without a word</h3>
+              <p>In strict mode every line belongs to a key, a block, or a scalar, or it is an error at its line &mdash; with a hint where a YAML habit such as <code>description: &gt;</code> is the cause.</p>
             </article>
             <article class="reason">
               <span class="reason-no">02</span>
-              <h3>Deliberately narrow</h3>
-              <p>No tags, anchors, aliases, merge keys, directives, or multi-document streams. The machinery that is not there cannot misbehave.</p>
+              <h3>One answer in every language</h3>
+              <p>TypeScript, Rust, and Go pass the same 336 Core and 136 References cases, error codes and lines included, and agree on 100,000 random documents in every CI run.</p>
             </article>
             <article class="reason">
               <span class="reason-no">03</span>
-              <h3>Shared conformance</h3>
-              <p>TypeScript, Rust, and Go run the same versioned corpus, including exact error codes and source positions.</p>
+              <h3>Types without guessing</h3>
+              <p><code>true</code> and <code>false</code> are the only booleans, so <code>country: NO</code> stays <code>"NO"</code>. Fixed date formats, safe integers, hard limits &mdash; one behaviour, no schema to choose.</p>
             </article>
           </div>
         </div>
@@ -94,30 +94,13 @@
       </div>
     </section>
 
-    <!-- Measurements -->
-    <section class="section" id="measure" aria-labelledby="measure-h">
-      <div class="shell layout">
-        <p class="kicker">03 / Measurements</p>
-        <div>
-          <h2 id="measure-h">Numbers instead<br>of adjectives.</h2>
-          <p class="intro">The comparison that does the frontmatter job on both sides: Lima Core 1.1 against js-yaml&rsquo;s <code>load()</code> path. About a quarter less code, and under a fifth of the download.</p>
-          <div class="ledger">
-            <div class="ledger-head"><span>&nbsp;</span><span>Code</span><span>Package</span></div>
-            <div class="ledger-row"><strong>Lima Core 1.1</strong><span class="measure">8,472<small>words</small></span><span class="measure">60.8<small>KB&nbsp;&dagger;</small></span></div>
-            <div class="ledger-row"><strong>js-yaml 5.2.3 <code>load()</code></strong><span class="measure">11,787<small>words</small></span><span class="measure">338<small>KB</small></span></div>
-          </div>
-          <p class="ledger-note">&dagger; The <code>@limaformat/lima</code> 0.6.0 package also bundles References 2.0 &mdash; an optional layer (~3,900 more words) with no YAML counterpart &mdash; so the download comparison is conservative. js-yaml&rsquo;s path additionally carries anchors and aliases, merge keys, multi-document streams, directives, and 21 tag implementations that ordinary frontmatter never needs &mdash; the same constructs behind the two CVEs below. Lima Core&rsquo;s 8,472 words also carry 5,288 words of comments, many tying an implementation line to a spec section. The full accounting &mdash; including the Lima Core 1.1 spec at 8,920 words against YAML 1.2.2&rsquo;s 21,961 &mdash; is in the <a href="https://github.com/limaformat/lima#how-much-smaller-actually">README</a>.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Security scope -->
     <section class="section" id="security" aria-labelledby="sec-h">
       <div class="shell layout">
-        <p class="kicker">04 / Security scope</p>
+        <p class="kicker">03 / Security scope</p>
         <div>
           <h2 id="sec-h">A narrower<br>attack surface.</h2>
-          <p class="intro">Not a claim that Lima is unhackable &mdash; a narrower one: two well-known YAML attack classes have no construct to target, because Lima never implemented the construct. This is worth something only where it applies &mdash; when something in your pipeline parses frontmatter you don&rsquo;t fully control (a CMS, user submissions, a multi-tenant platform), not for your own files.</p>
+          <p class="intro">No tags, anchors, aliases, merge keys, directives, or multi-document streams: the machinery that is not there cannot misbehave. Not a claim that Lima is unhackable &mdash; a narrower one: two well-known YAML attack classes have no construct to target, because Lima never implemented the construct. This is worth something only where it applies &mdash; when something in your pipeline parses frontmatter you don&rsquo;t fully control (a CMS, user submissions, a multi-tenant platform), not for your own files.</p>
           <div class="security">
             <article>
               <code>Executable tags</code>
@@ -130,6 +113,23 @@
               <p>Repeated alias expansion let a few kilobytes of YAML allocate gigabytes (CVE-2019-11253, the Kubernetes API server&rsquo;s &ldquo;Billion Laughs&rdquo;). Lima has no alias expansion; References 2.0 resolves by bounded structural copy, capped at 65,536 result nodes &mdash; a few kilobytes cannot balloon without limit.</p>
             </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Measurements -->
+    <section class="section" id="measure" aria-labelledby="measure-h">
+      <div class="shell layout">
+        <p class="kicker">04 / Measurements</p>
+        <div>
+          <h2 id="measure-h">Small as<br>a consequence.</h2>
+          <p class="intro">Lima is smaller because it does less &mdash; the evidence, not the goal. The comparison that does the frontmatter job on both sides, Lima Core 1.1 against js-yaml&rsquo;s <code>load()</code> path: about a quarter less code, and under a fifth of the download.</p>
+          <div class="ledger">
+            <div class="ledger-head"><span>&nbsp;</span><span>Code</span><span>Package</span></div>
+            <div class="ledger-row"><strong>Lima Core 1.1</strong><span class="measure">8,472<small>words</small></span><span class="measure">60.8<small>KB&nbsp;&dagger;</small></span></div>
+            <div class="ledger-row"><strong>js-yaml 5.2.3 <code>load()</code></strong><span class="measure">11,787<small>words</small></span><span class="measure">338<small>KB</small></span></div>
+          </div>
+          <p class="ledger-note">&dagger; The <code>@limaformat/lima</code> 0.6.0 package also bundles References 2.0 &mdash; an optional layer (~3,900 more words) with no YAML counterpart &mdash; so the download comparison is conservative. js-yaml&rsquo;s path additionally carries anchors and aliases, merge keys, multi-document streams, directives, and 21 tag implementations that ordinary frontmatter never needs &mdash; the same constructs behind the two CVEs below. Lima Core&rsquo;s 8,472 words also carry 5,288 words of comments, many tying an implementation line to a spec section. The full accounting &mdash; including the Lima Core 1.1 spec at 8,920 words against YAML 1.2.2&rsquo;s 21,961 &mdash; is in the <a href="https://github.com/limaformat/lima#how-much-smaller-actually">README</a>.</p>
         </div>
       </div>
     </section>
