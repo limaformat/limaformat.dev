@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{ meta.lang }" class="notranslate">
+
+{@partial partials/head.sort}
+
+<body class="page-doc">
+
+  {@partial partials/nav.sort}
+
+  <div class="shell doc-shell">
+
+    <div class="doc-bar" data-pagefind-ignore>
+      <button class="doc-bar-btn" type="button" popovertarget="doc-sidebar-pop">
+        <span class="doc-bar-ico">≡</span> Menu
+      </button>
+      {#if hasToc}
+      <button class="doc-bar-btn" type="button" popovertarget="doc-outline-pop">
+        On this page <span class="doc-bar-ico">▾</span>
+      </button>
+      {/if}
+    </div>
+
+    <aside class="doc-side" data-pagefind-ignore>
+      {@partial partials/sidebar.sort}
+    </aside>
+    <div class="doc-side-pop" id="doc-sidebar-pop" popover data-pagefind-ignore>
+      {@partial partials/sidebar.sort}
+    </div>
+
+    <main id="main-content" class="doc-main">
+      <article class="prose">
+        <h1 class="doc-title">{ meta.title }</h1>
+        {#if meta.description}<p class="doc-desc">{ meta.description }</p>{/if}
+
+        {#if urlPath === '/packages/'}
+        <div class="packages packages--list">
+          {#each site.packages as pkg}
+          <a class="package" href="{ pkg.url }">
+            <span class="package-lang">{ pkg.lang }</span>
+            <span class="package-name">{ pkg.name }</span>
+            <span class="package-registry">{ pkg.badge } &rarr;</span>
+            <span class="package-desc">{ pkg.desc }</span>
+          </a>
+          {/each}
+        </div>
+        {/if}
+
+        {#if urlPath === '/editors/'}
+        <div class="editors editors--list">
+          {#each site.editors as ed}
+          <div class="editor">
+            <img class="editor-logo{#if ed.invertDark} editor-logo--invert-dark{/if}" src="/assets/images/{ ed.logo }" alt="" width="28" height="28" loading="lazy" />
+            <span class="editor-name">{ ed.name }</span>
+            <span class="editor-support">{ ed.support }</span>
+            <p class="editor-desc">{ ed.desc }</p>
+            {#if ed.install}<code class="editor-cmd">{ ed.install }</code>{/if}
+            {#if ed.url}
+            <div class="editor-links">
+              <a href="{ ed.url }" target="_blank" rel="noopener noreferrer">{ ed.linkText }</a>
+              {#if ed.altUrl}<a href="{ ed.altUrl }" target="_blank" rel="noopener noreferrer">{ ed.altLinkText }</a>{/if}
+            </div>
+            {/if}
+          </div>
+          {/each}
+        </div>
+        {/if}
+
+        {@raw html.markup}
+      </article>
+    </main>
+
+    {#if hasToc}
+    <aside class="doc-outline" data-pagefind-ignore>
+      {@partial partials/doc-outline.sort}
+    </aside>
+    <div class="doc-outline doc-outline-pop" id="doc-outline-pop" popover aria-label="On this page" data-pagefind-ignore>
+      {@partial partials/doc-outline.sort}
+    </div>
+    {/if}
+
+  </div>
+
+  {@partial partials/footer.sort}
+
+</body>
+
+</html>

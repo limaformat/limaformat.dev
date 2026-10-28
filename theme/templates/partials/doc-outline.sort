@@ -1,0 +1,6 @@
+<p class="doc-outline-title">On this page</p>
+<nav>
+  {#each toc as item}
+  <a href="#{ item.id }">{ item.text }</a>
+  {/each}
+</nav>

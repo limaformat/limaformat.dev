@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="{ meta.lang }" class="notranslate">
+
+{@partial partials/head.sort}
+
+<body class="page-home">
+
+  {@partial partials/nav.sort}
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <header class="hero" id="overview">
+      <div class="shell hero-inner">
+        <div>
+          <h1>Frontmatter,<br><em>specified.</em></h1>
+          <p class="lede">Lima is a small data format with a complete specification, matching TypeScript, Rust, and Go implementations, and none of YAML&rsquo;s unused machinery.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="/docs/guide/">Get started</a>
+            <a class="btn-link" href="/packages/">Installation</a>
+          </div>
+        </div>
+        <figure class="sample">
+          <figcaption class="sample-head"><span class="sample-file"><img class="sample-ico" src="/favicon.svg" alt="" width="14" height="14" /> ARTICLE.LIMA</span><span>CORE 1.0</span></figcaption>
+          <pre><code><span class="line"><span class="key">title</span><span class="punct">:</span> <span class="str">A smaller format</span></span><span class="line"><span class="key">published</span><span class="punct">:</span> 2026-09-08</span><span class="line"><span class="key">authors</span><span class="punct">:</span></span><span class="line">  <span class="punct">-</span> <span class="key">name</span><span class="punct">:</span> <span class="str">Michael</span></span><span class="line">    <span class="key">role</span><span class="punct">:</span> <span class="str">author</span></span><span class="line"><span class="key">tags</span><span class="punct">:</span> <span class="sample-tags"><span class="punct">[</span>frontmatter<span class="punct">,</span> specification<span class="punct">]</span></span></span></code></pre>
+          <div class="sample-result">PARSED &nbsp;&rarr;&nbsp; <b>4 keys &middot; 0 diagnostics</b></div>
+        </figure>
+      </div>
+    </header>
+
+    <!-- Status strip -->
+    <aside class="status">
+      <div class="shell status-inner">
+        <div class="stat"><span class="stat-label">Conformance status</span><span class="stat-value">ALL IMPLEMENTATIONS PASS</span></div>
+        <div class="stat"><span class="stat-label">Core 1.1</span><span class="stat-value">336 cases</span></div>
+        <div class="stat"><span class="stat-label">References 2.0</span><span class="stat-value">136 cases</span></div>
+        <div class="stat"><span class="stat-label">Supply chain</span><span class="stat-value">0 dependencies</span></div>
+      </div>
+    </aside>
+
+    <!-- Why Lima -->
+    <section class="section" id="why" aria-labelledby="why-h">
+      <div class="shell layout">
+        <p class="kicker">01 / Why Lima</p>
+        <div>
+          <h2 id="why-h">Less language.<br>Fewer surprises.</h2>
+          <p class="intro">Fifteen lines of frontmatter do not need every feature of a general-purpose serialization format. Lima makes the small language the whole language.</p>
+          <div class="reasons">
+            <article class="reason">
+              <span class="reason-no">01</span>
+              <h3>Complete specification</h3>
+              <p>The grammar, data model, limits, diagnostics, and API behaviour are written down &mdash; not inferred from one implementation.</p>
+            </article>
+            <article class="reason">
+              <span class="reason-no">02</span>
+              <h3>Deliberately narrow</h3>
+              <p>No tags, anchors, aliases, merge keys, directives, or multi-document streams. The machinery that is not there cannot misbehave.</p>
+            </article>
+            <article class="reason">
+              <span class="reason-no">03</span>
+              <h3>Shared conformance</h3>
+              <p>TypeScript, Rust, and Go run the same versioned corpus, including exact error codes and source positions.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why not YAML / TOML / JSON -->
+    <section class="section" id="why-not" aria-labelledby="whynot-h">
+      <div class="shell layout">
+        <p class="kicker">02 / Why not</p>
+        <div>
+          <h2 id="whynot-h">YAML, TOML or JSON?</h2>
+          <p class="intro">Frontmatter is a few lines of key&ndash;value data. Each obvious choice carries a cost Lima was built to avoid.</p>
+          <div class="reasons">
+            <article class="reason">
+              <span class="reason-no">YAML</span>
+              <h3>Too large a grammar</h3>
+              <p>Frontmatter uses a small fraction of it. The unused parts are exactly where implementations diverge from each other and where the past CVEs sit.</p>
+            </article>
+            <article class="reason">
+              <span class="reason-no">TOML</span>
+              <h3>Verbose once nested</h3>
+              <p>Its <code>[section]</code> / <code>key = value</code> form is noisier than indentation for nested metadata, and it has no equivalent of References.</p>
+            </article>
+            <article class="reason">
+              <span class="reason-no">JSON</span>
+              <h3>Awkward to hand-author</h3>
+              <p>No comments, every key and string quoted, no multi-line strings &mdash; workable for machines, tedious to write and diff as frontmatter.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Measurements -->
+    <section class="section" id="measure" aria-labelledby="measure-h">
+      <div class="shell layout">
+        <p class="kicker">03 / Measurements</p>
+        <div>
+          <h2 id="measure-h">Numbers instead<br>of adjectives.</h2>
+          <p class="intro">The comparison that does the frontmatter job on both sides: Lima Core 1.1 against js-yaml&rsquo;s <code>load()</code> path. About a quarter less code, and under a fifth of the download.</p>
+          <div class="ledger">
+            <div class="ledger-head"><span>&nbsp;</span><span>Code</span><span>Package</span></div>
+            <div class="ledger-row"><strong>Lima Core 1.1</strong><span class="measure">8,472<small>words</small></span><span class="measure">60.8<small>KB&nbsp;&dagger;</small></span></div>
+            <div class="ledger-row"><strong>js-yaml 5.2.3 <code>load()</code></strong><span class="measure">11,787<small>words</small></span><span class="measure">338<small>KB</small></span></div>
+          </div>
+          <p class="ledger-note">&dagger; The <code>@limaformat/lima</code> 0.6.0 package also bundles References 2.0 &mdash; an optional layer (~3,900 more words) with no YAML counterpart &mdash; so the download comparison is conservative. js-yaml&rsquo;s path additionally carries anchors and aliases, merge keys, multi-document streams, directives, and 21 tag implementations that ordinary frontmatter never needs &mdash; the same constructs behind the two CVEs below. Lima Core&rsquo;s 8,472 words also carry 5,288 words of comments, many tying an implementation line to a spec section. The full accounting &mdash; including the Lima Core 1.1 spec at 8,920 words against YAML 1.2.2&rsquo;s 21,961 &mdash; is in the <a href="https://github.com/limaformat/lima#how-much-smaller-actually">README</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security scope -->
+    <section class="section" id="security" aria-labelledby="sec-h">
+      <div class="shell layout">
+        <p class="kicker">04 / Security scope</p>
+        <div>
+          <h2 id="sec-h">A narrower<br>attack surface.</h2>
+          <p class="intro">Not a claim that Lima is unhackable &mdash; a narrower one: two well-known YAML attack classes have no construct to target, because Lima never implemented the construct. This is worth something only where it applies &mdash; when something in your pipeline parses frontmatter you don&rsquo;t fully control (a CMS, user submissions, a multi-tenant platform), not for your own files.</p>
+          <div class="security">
+            <article>
+              <code>Executable tags</code>
+              <h3>No tag system</h3>
+              <p>PyYAML&rsquo;s <code>!!python/object/new</code> tag allowed arbitrary code execution (CVE-2020-1747). Lima has no tags, custom or built-in &mdash; a scalar is a string, number, boolean, null, or date, and nothing else.</p>
+            </article>
+            <article>
+              <code>Alias expansion</code>
+              <h3>No anchors or aliases</h3>
+              <p>Repeated alias expansion let a few kilobytes of YAML allocate gigabytes (CVE-2019-11253, the Kubernetes API server&rsquo;s &ldquo;Billion Laughs&rdquo;). Lima has no alias expansion; References 2.0 resolves by bounded structural copy, capped at 65,536 result nodes &mdash; a few kilobytes cannot balloon without limit.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section" id="packages" aria-labelledby="pkg-h">
+      <div class="shell layout">
+        <p class="kicker">05 / Packages</p>
+        <div>
+          <h2 id="pkg-h">Three implementations.<br>One contract.</h2>
+          <p class="intro">Choose the package native to your stack. The supported syntax and conformance fixtures remain the same.</p>
+          <div class="impl-grid">
+            {#each site.packages as pkg}
+            <a class="impl" href="{ pkg.url }">
+              <span class="impl-name">{ pkg.lang }</span>
+              <code class="impl-cmd">{ pkg.install }</code>
+              <span class="impl-reg">{ pkg.badge } &middot; v0.6.0 &rarr;</span>
+            </a>
+            {/each}
+          </div>
+          <p class="ledger-note">Editor support: a <a href="https://marketplace.visualstudio.com/items?itemName=limaformat.vscode-lima" target="_blank" rel="noopener noreferrer">VS Code extension</a> ships today; <a href="/editors/">more editors</a> run on a language server.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {@partial partials/footer.sort}
+
+</body>
+
+</html>

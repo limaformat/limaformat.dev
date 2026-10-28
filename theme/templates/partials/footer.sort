@@ -1,0 +1,6 @@
+<footer data-pagefind-ignore>
+  <div class="shell foot">
+    <p>Released under the <a href="https://github.com/limaformat/lima/blob/main/LICENSE">ISC License</a>.</p>
+    <p>Copyright &copy; { copyrightYear } { site.ownerLinks.name }</p>
+  </div>
+</footer>

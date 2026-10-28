@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{ meta.lang }" class="notranslate">
+
+{@partial partials/head.sort}
+
+<body class="page-doc">
+
+  {@partial partials/nav.sort}
+
+  <main id="main-content">
+    <section class="section section--flush">
+      <div class="shell layout">
+        <p class="kicker">{ meta.title }</p>
+        <article class="prose">
+          <h1 class="doc-title">{ meta.title }</h1>
+          {#if meta.description}<p class="doc-desc">{ meta.description }</p>{/if}
+          {@raw html.markup}
+        </article>
+      </div>
+    </section>
+  </main>
+
+  {@partial partials/footer.sort}
+
+</body>
+
+</html>

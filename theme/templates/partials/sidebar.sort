@@ -1,0 +1,12 @@
+<nav class="doc-nav" aria-label="Documentation">
+  <p class="doc-nav-group">Get started</p>
+  <a href="/docs/guide/"{#if urlPath === '/docs/guide/'} aria-current="page"{/if}>Guide</a>
+  <a href="/packages/"{#if urlPath === '/packages/'} aria-current="page"{/if}>Packages</a>
+  <a href="/editors/"{#if urlPath === '/editors/'} aria-current="page"{/if}>Editors</a>
+  <a href="/docs/migrating-from-yaml/"{#if urlPath === '/docs/migrating-from-yaml/'} aria-current="page"{/if}>Migrating from YAML</a>
+
+  <p class="doc-nav-group">Specification</p>
+  <a href="/docs/core-spec/"{#if urlPath === '/docs/core-spec/'} aria-current="page"{/if}>Core 1.1</a>
+  <a href="/docs/references-spec/"{#if urlPath === '/docs/references-spec/'} aria-current="page"{/if}>References 2.0</a>
+  <a href="/conformance/"{#if urlPath === '/conformance/'} aria-current="page"{/if}>Conformance</a>
+</nav>

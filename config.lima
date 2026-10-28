@@ -1,0 +1,140 @@
+site:
+  origin: https://limaformat.dev
+  since: 2026
+  owner: $(persons/mko)
+  default:
+    language: en
+    locale: en_US
+    title: Lima
+    claim: A small, specified frontmatter format.
+    tagline: A small data format for frontmatter — one complete specification, matching TypeScript, Rust, and Go parsers, and none of YAML's unused machinery.
+    description: "Lima is a small, fully specified frontmatter format: familiar YAML-style syntax, matching TypeScript, Rust and Go parsers, none of YAML's unused machinery."
+
+typography:
+  enabled: true
+
+comments:
+  enabled: false
+
+search:
+  enabled: false
+
+# og-default.jpg for the site and an og.jpg per article from its cover or first
+# image; needs the logo, the claim and --og-background/--og-accent in style.css.
+og:
+  enabled: true
+
+# The Shiki theme of code blocks (https://shiki.style/themes); without it, the
+# build fails as soon as a page has a code block in a language.
+highlighting:
+  theme: nord
+
+# Not rendered by any template — the nav and footer are authored directly in
+# theme/templates. hadley uses this only to order the "More pages" list in
+# llms.txt (falls back to alphabetical URL order without it).
+navigations:
+  main: [home, guide, core-spec, references-spec, conformance, packages, editors, migrating-from-yaml]
+
+# Rendered on the homepage (section 06) and on /packages/.
+packages:
+  - lang: TypeScript
+    name: '@limaformat/lima'
+    badge: npm
+    install: npm i @limaformat/lima
+    url: https://www.npmjs.com/package/@limaformat/lima
+    linkText: npmjs.com/package/@limaformat/lima
+    desc: Core 1.1 and References 2.0. The reference implementation. Zero runtime dependencies.
+  - lang: Rust
+    name: lima
+    badge: crates.io
+    install: cargo add lima
+    url: https://crates.io/crates/lima
+    linkText: crates.io/crates/lima
+    desc: Core 1.1 and References 2.0, independently implemented. Zero runtime dependencies.
+  - lang: Go
+    name: lima
+    badge: pkg.go.dev
+    install: go get github.com/limaformat/lima/go
+    url: https://pkg.go.dev/github.com/limaformat/lima/go
+    linkText: pkg.go.dev/github.com/limaformat/lima/go
+    desc: Core 1.1 and References 2.0, independently implemented. Zero runtime dependencies.
+
+# Rendered on the homepage (section 06) and on /editors/. Support tiers are
+# reported honestly, not aspirationally: VS Code, Sublime Text, Emacs,
+# Neovim (main-branch nvim-treesitter), Helix, and Zed ship syntax
+# highlighting; only JetBrains is diagnostics-only via the LSP server, no
+# Lima-specific highlighting yet.
+# @limaformat/lima-language-server 0.2.0 published 2026-09-15 (hover,
+# go-to-definition, Sublime/Emacs syntax, Zed and JetBrains support).
+# The tree-sitter-lima grammar (Neovim/Helix/Zed highlighting) was added
+# afterward in the monorepo but is not yet pushed; do not deploy this page
+# update before that happens (site/DEPLOYING.md's B1 gate).
+editors:
+  - name: VS Code
+    logo: editors/vscode.svg
+    support: Syntax highlighting + live diagnostics
+    install: ext install limaformat.vscode-lima
+    url: https://marketplace.visualstudio.com/items?itemName=limaformat.vscode-lima
+    linkText: marketplace.visualstudio.com
+    altUrl: https://open-vsx.org/extension/limaformat/vscode-lima
+    altLinkText: open-vsx.org
+    desc: Published extension — grammar for Core 1.0 + References 2.0, plus live diagnostics through the bundled parser.
+  - name: Neovim
+    logo: editors/neovim.svg
+    support: Syntax highlighting + diagnostics via LSP
+    install: vim.lsp.enable("lima_ls")
+    url: "https://github.com/limaformat/lima/tree/main/editors/lsp#neovim-011"
+    linkText: setup guide
+    desc: Built-in LSP client (0.11+), plus a tree-sitter-lima grammar for Core 1.0 + active References 2.0 highlighting on nvim-treesitter's main branch.
+  - name: Helix
+    logo: editors/helix.svg
+    invertDark: true
+    support: Syntax highlighting + diagnostics via LSP
+    install: languages.toml
+    url: "https://github.com/limaformat/lima/tree/main/editors/lsp#helix"
+    linkText: setup guide
+    desc: Native LSP support via a languages.toml entry, plus the same tree-sitter-lima grammar registered as a grammar source.
+  - name: Sublime Text
+    logo: editors/sublimetext.svg
+    support: Syntax highlighting + diagnostics via LSP
+    install: LSP.sublime-settings
+    url: "https://github.com/limaformat/lima/tree/main/editors/lsp#sublime-text"
+    linkText: setup guide
+    desc: Included .sublime-syntax highlights Core 1.0 + active References 2.0 tokens for standalone .lima files. Markdown/MDX frontmatter injection isn't included yet.
+  - name: JetBrains
+    logo: editors/jetbrains.svg
+    invertDark: true
+    support: Diagnostics via LSP
+    install: LSP4IJ companion plugin
+    url: "https://github.com/limaformat/lima/tree/main/editors/jetbrains"
+    linkText: setup guide
+    desc: A companion plugin registers the server through LSP4IJ automatically — no manual Generic LSP Server setup. Not yet on JetBrains Marketplace; install the built ZIP from a checkout. No syntax highlighting shipped yet.
+  - name: Emacs
+    logo: editors/emacs.svg
+    support: Syntax highlighting + diagnostics via LSP
+    install: eglot
+    url: "https://github.com/limaformat/lima/tree/main/editors/lsp#emacs-29"
+    linkText: setup guide
+    desc: Included lima-mode highlights Core 1.0 + active References 2.0 tokens, plus diagnostics and document-reference navigation via eglot (built into Emacs 29+).
+  - name: Zed
+    logo: editors/zed.svg
+    support: Syntax highlighting + diagnostics via LSP (dev extension)
+    install: Install Dev Extension
+    url: "https://github.com/limaformat/lima/tree/main/editors/zed"
+    linkText: setup guide
+    desc: Not yet in Zed's extension registry — install from a checkout with "Extensions: Install Dev Extension". Pins the tree-sitter-lima grammar for Core 1.0 + active References 2.0 highlighting.
+
+metadata:
+
+  title:
+    aliases:
+      - titel
+
+  description:
+
+  type:
+
+  kind:
+
+dev:
+  port: 8040
