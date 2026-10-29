@@ -9,11 +9,11 @@ the normative text there wins: a correction to a specification belongs there, on
 
 ## Layout
 
-- `config.lima` — the site's settings, navigation, and the lists of packages and editors
+- `config.lima` — the site's settings, navigation, and the lists of packages and editors; the specifications and
+  guides, read from `docs/` of the [Lima repository](https://github.com/limaformat/lima) at a commit
 - `content/pages/` — one bundle per page, written in [Markanto](https://markanto.org)
 - `theme/` — templates, stylesheets, scripts, images and fonts
-- `scripts/` — `spec-sync-check.ts`, which checks the specification copies against the repository, and the logo
-  preparation
+- `scripts/` — the logo preparation
 
 ## Building
 

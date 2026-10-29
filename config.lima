@@ -33,7 +33,46 @@ highlighting:
 # theme/templates. hadley uses this only to order the "More pages" list in
 # llms.txt (falls back to alphabetical URL order without it).
 navigations:
-  main: [home, guide, core-spec, references-spec, conformance, packages, editors, migrating-from-yaml]
+  main: [home, docs-guide, docs-lima-core-1.0-spec, docs-lima-references-2.0-spec, conformance, packages, editors, docs-migrating-from-yaml]
+
+# The specifications and guides, from docs/ of the Lima repository at a
+# commit (docs: sources.md of hadley); their text is edited there, not here.
+sources:
+  docs:
+    repository: https://github.com/limaformat/lima
+    ref: 75b5cfe27136
+    checkout: ~/dev/lima/monorepo
+    path: docs
+    root: pages
+    urlPath: /docs/
+    pages:
+      "lima-core-1.0-spec":
+        urlPath: /docs/core-spec/
+        linktext: Spec
+        description: Syntax, types, and error behaviour. The single source of truth for what a conforming Core implementation must do.
+        template: doc
+        type: page
+      "lima-references-2.0-spec":
+        urlPath: /docs/references-spec/
+        description: Versioned syntax, partial mapping paths, and bounded transitive references — the optional extension layer on top of Core.
+        template: doc
+        type: page
+      "lima-references-1.0-spec":
+        urlPath: /docs/references-1-spec/
+        linktext: Lima References 1.0 — Normative Specification (Archived)
+        description: Archived. Document-property references and external partials — the frozen References 1.0 specification, retained as an independently tested legacy target.
+        template: doc
+        type: page
+      guide:
+        linktext: Guide
+        description: A practical walkthrough of Lima syntax, the References Extension, resource limits, and the JavaScript/TypeScript API.
+        template: doc
+        type: page
+      migrating-from-yaml:
+        linktext: Migrating from YAML
+        description: What to check, what has no equivalent, and how to verify a migration mechanically instead of by eye.
+        template: doc
+        type: page
 
 # Rendered on the homepage (section 06) and on /packages/.
 packages:

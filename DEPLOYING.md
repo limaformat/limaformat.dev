@@ -24,11 +24,10 @@ it runs `theme/assets/images/logo-{light,dark}.svg` through svgo and derives
 
 Run from `site/`:
 
-- [ ] **Spec copies in sync.** `bun scripts/spec-sync-check.ts` → exit 0.
-      The three spec pages (`core-spec`, `references-spec`, `references-1-spec`)
-      are hand-maintained copies of the normative specs in the monorepo; the
-      normative source wins. Set `LIMA_MONOREPO` if it is not at
-      `../../../dev/lima/monorepo`.
+- [ ] **Docs at their commit.** The three spec pages, the guide and the YAML
+      migration are `docs/` of the Lima repository at the commit `sources` in
+      `config.lima` names, read from `~/dev/lima/monorepo`; a change is a commit
+      there and a new `ref` here, never an edit here.
 - [ ] **Package numbers match reality.** Every package version, case count,
       word count, tarball size and ratio on the site matches what npm /
       crates.io / pkg.go.dev serve and what the Lima README states — in the
@@ -68,8 +67,8 @@ The site must never advertise a version the registries do not have.
     `packages/hadley/package.json`), `bun install`, and run hadley's gate and
     its build comparison of every site. The `markanto.org` build depends on
     the same hadley.
-11. Only now: run `bun scripts/spec-sync-check.ts`, commit this repo, and
-    deploy.
+11. Only now: point `sources` at the commit of the Lima repository that holds
+    the docs, commit this repo, and deploy.
 12. Live smoke test: nav version dropdown, the three registry cards, the
     changelog + release links, canonical URLs, sitemap, and both themes.
 
