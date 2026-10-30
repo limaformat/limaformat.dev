@@ -6,7 +6,7 @@
   <a href="/docs/migrating-from-yaml/"{#if urlPath === '/docs/migrating-from-yaml/'} aria-current="page"{/if}>Migrating from YAML</a>
 
   <p class="doc-nav-group">Specification</p>
-  <a href="/docs/core-spec/"{#if urlPath === '/docs/core-spec/'} aria-current="page"{/if}>Core 1.1</a>
-  <a href="/docs/references-spec/"{#if urlPath === '/docs/references-spec/'} aria-current="page"{/if}>References 2.0</a>
+  <a href="/docs/core-spec/"{#if urlPath === '/docs/core-spec/'} aria-current="page"{/if}>Core { site.data.lima.language.core_version }</a>
+  <a href="/docs/references-spec/"{#if urlPath === '/docs/references-spec/'} aria-current="page"{/if}>References { site.data.lima.language.references_version }</a>
   <a href="/conformance/"{#if urlPath === '/conformance/'} aria-current="page"{/if}>Conformance</a>
 </nav>

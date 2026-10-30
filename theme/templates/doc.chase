@@ -38,11 +38,34 @@
           <a class="package" href="{ pkg.url }">
             <span class="package-lang">{ pkg.lang }</span>
             <span class="package-name">{ pkg.name }</span>
-            <span class="package-registry">{ pkg.badge } &rarr;</span>
-            <span class="package-desc">{ pkg.desc }</span>
+            <span class="package-registry">{ pkg.badge } &middot; v{ site.data.lima.packages.version } &rarr;</span>
+            <span class="package-desc">Lima Core { site.data.lima.language.core_version } and References { site.data.lima.language.references_version }. { pkg.desc }</span>
           </a>
           {/each}
         </div>
+        <table class="facts">
+          <tbody>
+            <tr><th scope="row">Specifications</th><td>Lima Core { site.data.lima.language.core_version }, Lima References { site.data.lima.language.references_version }; keys by the letters, marks and numbers of Unicode { site.data.lima.language.unicode_version }</td></tr>
+            <tr><th scope="row">Conformance</th><td>{ site.data.lima.corpus.default.core_cases | number('en-US') } Core and { site.data.lima.corpus.default.references_cases | number('en-US') } References cases, passed by all three implementations; see <a href="/conformance/">Conformance</a></td></tr>
+            <tr><th scope="row">Differential test</th><td>{ site.data.lima.differential_test.parses_per_implementation | number('en-US') } parses per implementation in every CI run, which must agree on every value, warning and error</td></tr>
+            <tr><th scope="row">Published</th><td><code>@limaformat/lima</code> { site.data.lima.packages.version } &middot; <code>lima</code> { site.data.lima.packages.version } &middot; <code>github.com/limaformat/lima/go</code> v{ site.data.lima.packages.version }</td></tr>
+          </tbody>
+        </table>
+        {/if}
+
+        {#if urlPath === '/conformance/'}
+        <table class="facts">
+          <thead><tr><th scope="col">Suite</th><th scope="col">Cases</th><th scope="col">In the current target</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Core 1.0 &mdash; the frozen { site.data.lima.corpus.suites.core_1_0.baseline_cases | number('en-US') }-case 1.0.0 baseline and its errata through { site.data.lima.corpus.suites.core_1_0.latest_errata_version }</th><td>{ site.data.lima.corpus.suites.core_1_0.cases | number('en-US') }</td><td>{ site.data.lima.corpus.suites.core_1_0.cases_in_default | number('en-US') }</td></tr>
+            <tr><th scope="row">Core 1.1 &mdash; superseding { site.data.lima.corpus.suites.core_1_1.superseded_core_1_0_cases } Core 1.0 cases</th><td>{ site.data.lima.corpus.suites.core_1_1.cases | number('en-US') }</td><td>{ site.data.lima.corpus.suites.core_1_1.cases_in_default | number('en-US') }</td></tr>
+            <tr><th scope="row">Core 1.2</th><td>{ site.data.lima.corpus.suites.core_1_2.cases | number('en-US') }</td><td>{ site.data.lima.corpus.suites.core_1_2.cases_in_default | number('en-US') }</td></tr>
+            <tr><th scope="row">References 2.0</th><td>{ site.data.lima.corpus.suites.references_2_0.cases | number('en-US') }</td><td>{ site.data.lima.corpus.suites.references_2_0.cases_in_default | number('en-US') }</td></tr>
+            <tr><th scope="row">References 2.1</th><td>{ site.data.lima.corpus.suites.references_2_1.cases | number('en-US') }</td><td>{ site.data.lima.corpus.suites.references_2_1.cases_in_default | number('en-US') }</td></tr>
+            <tr><th scope="row">References 1.0 &mdash; archived, a regression guard only</th><td>{ site.data.lima.corpus.suites.references_1_0.cases | number('en-US') }</td><td>&mdash;</td></tr>
+            <tr><th scope="row">The current target: Core { site.data.lima.language.core_version } and References { site.data.lima.language.references_version }</th><td></td><td>{ site.data.lima.corpus.default.cases | number('en-US') }: { site.data.lima.corpus.default.core_cases | number('en-US') } Core, { site.data.lima.corpus.default.references_cases | number('en-US') } References</td></tr>
+          </tbody>
+        </table>
         {/if}
 
         {#if urlPath === '/editors/'}

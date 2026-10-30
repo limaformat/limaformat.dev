@@ -11,8 +11,8 @@
         <details class="nav-dd">
           <summary>Spec</summary>
           <div class="nav-dd-panel">
-            <a href="/docs/core-spec/"{#if urlPath === '/docs/core-spec/'} aria-current="page"{/if}>Core 1.1</a>
-            <a href="/docs/references-spec/"{#if urlPath === '/docs/references-spec/'} aria-current="page"{/if}>References 2.0</a>
+            <a href="/docs/core-spec/"{#if urlPath === '/docs/core-spec/'} aria-current="page"{/if}>Core { site.data.lima.language.core_version }</a>
+            <a href="/docs/references-spec/"{#if urlPath === '/docs/references-spec/'} aria-current="page"{/if}>References { site.data.lima.language.references_version }</a>
             <a href="/conformance/"{#if urlPath === '/conformance/'} aria-current="page"{/if}>Conformance</a>
           </div>
         </details>
@@ -30,12 +30,12 @@
 
     <div class="nav-tools">
       <details class="nav-dd nav-dd--version">
-        <summary>v0.6.0</summary>
+        <summary>v{ site.data.lima.packages.version }</summary>
         <div class="nav-dd-panel">
           <a href="https://github.com/limaformat/lima/blob/main/js/CHANGELOG.md">Changelog</a>
-          <a href="https://www.npmjs.com/package/@limaformat/lima">npm &middot; 0.6.0</a>
-          <a href="https://crates.io/crates/lima">crates.io &middot; 0.6.0</a>
-          <a href="https://pkg.go.dev/github.com/limaformat/lima/go">pkg.go.dev &middot; v0.6.0</a>
+          <a href="https://www.npmjs.com/package/@limaformat/lima">npm &middot; { site.data.lima.packages.version }</a>
+          <a href="https://crates.io/crates/lima">crates.io &middot; { site.data.lima.packages.version }</a>
+          <a href="https://pkg.go.dev/github.com/limaformat/lima/go">pkg.go.dev &middot; v{ site.data.lima.packages.version }</a>
           <a href="https://github.com/limaformat/lima/releases">GitHub releases</a>
         </div>
       </details>

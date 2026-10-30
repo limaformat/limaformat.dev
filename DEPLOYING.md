@@ -28,13 +28,12 @@ Run from `site/`:
       migration are `docs/` of the Lima repository at the commit `sources` in
       `config.lima` names, read from `~/dev/lima/monorepo`; a change is a commit
       there and a new `ref` here, never an edit here.
-- [ ] **Package numbers match reality.** Every package version, case count,
-      word count, tarball size and ratio on the site matches what npm /
-      crates.io / pkg.go.dev serve and what the Lima README states — in the
-      theme as in the pages: `theme/templates/partials/nav.sort` (version
-      menu), `sidebar.sort`, `home.chase` (status strip, measurements, registry
-      cards), `packages.md`, `conformance.md`, and the package descriptions in
-      `config.lima`. See the release order below.
+- [ ] **Numbers from the Lima repository.** Every version, case count, word
+      count, tarball size and ratio on the site comes from `docs/facts.lima`
+      of the Lima repository at the same `ref` as the docs (`sources.docs.data`,
+      read by the templates as `site.data.lima`); the site states none by hand.
+      A new number on a page goes into the theme from `site.data.lima`, and one
+      that is missing there is measured by Lima's `scripts/facts.ts` first.
 - [ ] **Links.** No internal link points at a removed page (`/docs/` hub,
       `/docs/integrations/`, `/docs/migrating-references-1-to-2/`). External
       registry + GitHub links resolve.
@@ -48,12 +47,10 @@ The site must never advertise a version the registries do not have.
 
 1. Land every release-affecting change in the monorepo from a clean tree.
 2. Run all monorepo gates (JS + corpus + Rust + Go).
-3. `cd monorepo/js && bun run build && npm pack --dry-run --json` — read
-   `.size`. This is the authoritative tarball size.
-4. Propagate that number everywhere it appears — monorepo `README.md`,
-   `js/CHANGELOG.md`, `js/scripts/wordcount.md`, and this site's
-   `home.chase` §04 (measurements) — then **pack once more** (the CHANGELOG is inside the
-   tarball) and confirm the number is stable.
+3. `cd monorepo && bun scripts/facts.ts` after the version bump: it measures
+   every number (the tarball size by `npm pack`, until it settles) and writes
+   `docs/facts.lima` and the READMEs; CI's `facts.ts --check` keeps them true.
+4. Commit what it changed with the release.
 5. Commit the monorepo, push `main`.
 6. Tag `v<version>`, `rust/v<version>`, `go/v<version>` on that same commit;
    push the tags.
@@ -67,8 +64,9 @@ The site must never advertise a version the registries do not have.
     `packages/hadley/package.json`), `bun install`, and run hadley's gate and
     its build comparison of every site. The `markanto.org` build depends on
     the same hadley.
-11. Only now: point `sources` at the commit of the Lima repository that holds
-    the docs, commit this repo, and deploy.
+11. Only now: point `sources.docs.ref` at the release commit of the Lima
+    repository — its docs and its `facts.lima` with it — commit this repo, and
+    deploy.
 12. Live smoke test: nav version dropdown, the three registry cards, the
     changelog + release links, canonical URLs, sitemap, and both themes.
 

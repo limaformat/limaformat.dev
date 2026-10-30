@@ -32,8 +32,8 @@
     <aside class="status">
       <div class="shell status-inner">
         <div class="stat"><span class="stat-label">Conformance status</span><span class="stat-value">ALL IMPLEMENTATIONS PASS</span></div>
-        <div class="stat"><span class="stat-label">Core 1.1</span><span class="stat-value">336 cases</span></div>
-        <div class="stat"><span class="stat-label">Differential test</span><span class="stat-value">200,000 parses / run</span></div>
+        <div class="stat"><span class="stat-label">Core { site.data.lima.language.core_version }</span><span class="stat-value">{ site.data.lima.corpus.default.core_cases | number('en-US') } cases</span></div>
+        <div class="stat"><span class="stat-label">Differential test</span><span class="stat-value">{ site.data.lima.differential_test.parses_per_implementation | number('en-US') } parses / run</span></div>
         <div class="stat"><span class="stat-label">Supply chain</span><span class="stat-value">0 dependencies</span></div>
       </div>
     </aside>
@@ -54,7 +54,7 @@
             <article class="reason">
               <span class="reason-no">02</span>
               <h3>One answer in every language</h3>
-              <p>TypeScript, Rust, and Go pass the same 336 Core and 136 References cases, error codes and lines included, and agree on 100,000 random documents in every CI run.</p>
+              <p>TypeScript, Rust, and Go pass the same { site.data.lima.corpus.default.core_cases | number('en-US') } Core and { site.data.lima.corpus.default.references_cases | number('en-US') } References cases, error codes and lines included, and agree on { site.data.lima.differential_test.documents | number('en-US') } random documents in every CI run.</p>
             </article>
             <article class="reason">
               <span class="reason-no">03</span>
@@ -123,13 +123,13 @@
         <p class="kicker">04 / Measurements</p>
         <div>
           <h2 id="measure-h">Small as<br>a consequence.</h2>
-          <p class="intro">Lima is smaller because it does less &mdash; the evidence, not the goal. The comparison that does the frontmatter job on both sides, Lima Core 1.1 against js-yaml&rsquo;s <code>load()</code> path: about a quarter less code, and under a fifth of the download.</p>
+          <p class="intro">Lima is smaller because it does less &mdash; the evidence, not the goal. The comparison that does the frontmatter job on both sides, Lima Core { site.data.lima.language.core_version } against js-yaml&rsquo;s <code>load()</code> path: less code, and js-yaml&rsquo;s download is { site.data.lima.package_sizes.js_yaml_ratio_to_lima | number('en-US') } times Lima&rsquo;s.</p>
           <div class="ledger">
             <div class="ledger-head"><span>&nbsp;</span><span>Code</span><span>Package</span></div>
-            <div class="ledger-row"><strong>Lima Core 1.1</strong><span class="measure">8,472<small>words</small></span><span class="measure">60.8<small>KB&nbsp;&dagger;</small></span></div>
-            <div class="ledger-row"><strong>js-yaml 5.2.3 <code>load()</code></strong><span class="measure">11,787<small>words</small></span><span class="measure">338<small>KB</small></span></div>
+            <div class="ledger-row"><strong>Lima Core { site.data.lima.language.core_version }</strong><span class="measure">{ site.data.lima.word_counts.implementations.lima_core_code | number('en-US') }<small>words</small></span><span class="measure">{ site.data.lima.package_sizes.lima_npm_tarball_kilobytes_decimal | number('en-US') }<small>KB&nbsp;&dagger;</small></span></div>
+            <div class="ledger-row"><strong>js-yaml { site.data.lima.word_counts.implementations.js_yaml_version } <code>load()</code></strong><span class="measure">{ site.data.lima.word_counts.implementations.js_yaml_code | number('en-US') }<small>words</small></span><span class="measure">{ site.data.lima.package_sizes.js_yaml_npm_tarball_kilobytes_decimal | number('en-US') }<small>KB</small></span></div>
           </div>
-          <p class="ledger-note">&dagger; The <code>@limaformat/lima</code> 0.6.0 package also bundles References 2.0 &mdash; an optional layer (~3,900 more words) with no YAML counterpart &mdash; so the download comparison is conservative. js-yaml&rsquo;s path additionally carries anchors and aliases, merge keys, multi-document streams, directives, and 21 tag implementations that ordinary frontmatter never needs &mdash; the same constructs behind the two CVEs below. Lima Core&rsquo;s 8,472 words also carry 5,288 words of comments, many tying an implementation line to a spec section. The full accounting &mdash; including the Lima Core 1.1 spec at 8,920 words against YAML 1.2.2&rsquo;s 21,961 &mdash; is in the <a href="https://github.com/limaformat/lima#how-much-smaller-actually">README</a>.</p>
+          <p class="ledger-note">&dagger; The <code>@limaformat/lima</code> { site.data.lima.packages.version } package also bundles References { site.data.lima.language.references_version } &mdash; an optional layer ({ site.data.lima.word_counts.implementations.lima_references_code | number('en-US') } more words) with no YAML counterpart &mdash; so the download comparison is conservative. js-yaml&rsquo;s path additionally carries anchors and aliases, merge keys, multi-document streams, directives, and { site.data.lima.word_counts.implementations.js_yaml_tag_implementations | number('en-US') } tag implementations that ordinary frontmatter never needs &mdash; the same constructs behind the two CVEs below. Lima Core&rsquo;s { site.data.lima.word_counts.implementations.lima_core_code | number('en-US') } words also carry { site.data.lima.word_counts.implementations.lima_core_comments | number('en-US') } words of comments, many tying an implementation line to a spec section. The full accounting &mdash; including the Lima Core { site.data.lima.language.core_version } spec at { site.data.lima.word_counts.specifications.lima_core | number('en-US') } words against YAML 1.2.2&rsquo;s { site.data.lima.word_counts.specifications.yaml_1_2_2 | number('en-US') } &mdash; is in the <a href="https://github.com/limaformat/lima#how-much-smaller-actually">README</a>.</p>
         </div>
       </div>
     </section>
@@ -146,7 +146,7 @@
             <a class="impl" href="{ pkg.url }">
               <span class="impl-name">{ pkg.lang }</span>
               <code class="impl-cmd">{ pkg.install }</code>
-              <span class="impl-reg">{ pkg.badge } &middot; v0.6.0 &rarr;</span>
+              <span class="impl-reg">{ pkg.badge } &middot; v{ site.data.lima.packages.version } &rarr;</span>
             </a>
             {/each}
           </div>

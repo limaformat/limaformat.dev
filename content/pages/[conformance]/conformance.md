@@ -1,23 +1,24 @@
 ---
 title: Conformance
-description: Two language-neutral conformance suites — 336 Core 1.1 cases and 136 References 2.0 cases — passed by TypeScript, Rust, and Go, plus a differential test of all three.
+description: Language-neutral conformance suites for Lima Core and References, passed by TypeScript, Rust, and Go, plus a differential test of all three.
 urlPath: /conformance/
 template: doc
 type: page
 ---
-One of the standing criticisms of YAML is that different implementations routinely disagree with each other on ambiguous edge cases. Lima addresses this directly with a shared, implementation-independent **conformance corpus**, rather than tests written informally by each implementation's own author. Two independently runnable targets exist today: 336 Core 1.1 cases and 136 References 2.0 cases. TypeScript, Rust, and Go pass both against the same expectations.
+One of the standing criticisms of YAML is that different implementations routinely disagree with each other on ambiguous edge cases. Lima addresses this directly with a shared, implementation-independent **conformance corpus**, rather than tests written informally by each implementation's own author. Its suites and their cases are in the table above, counted from the repository at the version this site shows; TypeScript, Rust, and Go pass every case against the same expectations.
 
 ```bash
 # from corpus/runner/
-bun run run                 # Core 1.1 — 336 cases, and References 2.0 — 136 cases
+bun run run                 # every Core and References suite
 bun run run:references-2    # References 2.0 alone
 ```
 
 ## What's in it
 
-- A **byte-frozen 149-case Core 1.0.0 baseline** — count-pinned by a test and byte-protected by checked-in content-hash manifests so it cannot silently drift. Core 1.0 grew to **218 cases** via additive errata revisions through 1.0.10; each added case carries a `since` marker and the 149-case baseline stays byte-identical.
-- A frozen **126-case** suite for Lima Core 1.1, pinned the same way. It supersedes 8 Core 1.0 cases, which stay in the 1.0 baseline as they are, so the current Core target is **336 cases**.
-- A separate **136-case** suite for Lima References 2.0, versioned independently and run on its own.
+- A **byte-frozen Core 1.0.0 baseline** — count-pinned by a test and byte-protected by checked-in content-hash manifests so it cannot silently drift. Core 1.0 grew via additive errata revisions through 1.0.10; each added case carries a `since` marker and the baseline stays byte-identical.
+- A frozen suite for Lima Core 1.1, pinned the same way. It supersedes 8 Core 1.0 cases, which stay in the 1.0 baseline as they are.
+- A suite for Lima Core 1.2: keys in any script, and a case for every row of the table of what each kind of line does.
+- Separate suites for Lima References 2.0 and 2.1, versioned independently and run on their own.
 - Every case has exactly one expectation kind: a successful **result**, a thrown **error**, or **warnings** alongside a result.
 - Case IDs are permanently stable and follow a fixed scheme:
 
@@ -69,15 +70,12 @@ Cases near a resource limit (§9 of Core, §6.2 of References) are produced by s
 
 ## Beyond the cases: a differential test
 
-A corpus pins what someone thought of. In every CI run, TypeScript, Rust, and Go also parse the same 100,000 random documents — half nested the way front matter is and then disturbed, half random lines, some at a resource limit — in both modes, and must agree on every value, every warning, and every error code and line. A disagreement is a defect in one implementation or a place the specification leaves open; once decided, it becomes a corpus case. Agreement is not correctness, though: three implementations can share a mistake, which is why the corpus stays the contract.
+A corpus pins what someone thought of. In every CI run, TypeScript, Rust, and Go also parse the same random documents — half nested the way front matter is and then disturbed, half random lines, some at a resource limit — in both modes, and must agree on every value, every warning, and every error code and line. A disagreement is a defect in one implementation or a place the specification leaves open; once decided, it becomes a corpus case. Agreement is not correctness, though: three implementations can share a mistake, which is why the corpus stays the contract.
 
 ## Where this is going
 
-The corpus is organized as versioned, independently runnable conformance targets, not one ever-growing pile of cases:
+The corpus is organized as versioned, independently runnable conformance targets, not one ever-growing pile of cases: the suites in the table above. TypeScript (`@limaformat/lima`), Rust (`lima`), and Go (`github.com/limaformat/lima/go`) all pass them against exactly the same expectations, the References suites through their public References APIs.
 
-- **Core 1.1 — 336 cases** (the 218 Core 1.0 cases — the byte-frozen 149-case 1.0.0 baseline plus 69 additive errata cases through 1.0.10 — without the 8 Core 1.1 supersedes, plus 126 Core 1.1 cases). TypeScript (`@limaformat/lima`), Rust (`lima`), and Go (`github.com/limaformat/lima/go`) all pass them against exactly the same expectations today.
-- **References 2.0 — 136 cases, a separate suite.** TypeScript, Rust, and Go each pass it (136/136) through their public References 2.0 APIs.
-
-The suites remain separate conformance targets rather than one growing specification version. An implementation may legitimately claim Core 1.1 without claiming References 2.0. See [Packages](/packages/) for implementation status per binding.
+The suites remain separate conformance targets rather than one growing specification version. An implementation may legitimately claim Lima Core without claiming References. See [Packages](/packages/) for implementation status per binding.
 
 The full corpus, its schema, and the coverage matrices live in the repository: [`corpus/`](https://github.com/limaformat/lima/tree/main/corpus), design rationale in [`docs/corpus-design/`](https://github.com/limaformat/lima/tree/main/docs/corpus-design).
