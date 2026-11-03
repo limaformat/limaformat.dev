@@ -2,5 +2,6 @@
   <div class="shell foot">
     <p>Released under the <a href="https://github.com/limaformat/lima/blob/main/LICENSE">ISC License</a>.</p>
     <p>Copyright &copy; { copyrightYear } { site.ownerLinks.name }</p>
+    <p><a href="https://hadley.sh" rel="noopener">Built with hadley</a></p>
   </div>
 </footer>
