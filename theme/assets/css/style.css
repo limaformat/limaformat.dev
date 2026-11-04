@@ -84,7 +84,6 @@
   /* Read literally (not resolved) by lib/read-css-tokens.ts for og-default.jpg —
      plain hex on purpose, never var(). */
   --og-background: #1b1b1a;
-  --og-accent:     #edb253;
 
   /* Display headings — wide, sturdy. Codex's metrics (tracking, weights) were
      tuned against Georgia, which is also what the prototype renders as on any
