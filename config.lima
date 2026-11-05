@@ -42,7 +42,7 @@ navigations:
 sources:
   docs:
     repository: https://github.com/limaformat/lima
-    ref: b220ee4f6033
+    ref: 3828c541d28e
     checkout: ~/dev/lima/monorepo
     path: docs
     root: pages
