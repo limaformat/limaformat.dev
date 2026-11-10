@@ -1,6 +1,7 @@
 <nav class="doc-nav" aria-label="Documentation">
   <p class="doc-nav-group">Get started</p>
   <a href="/docs/guide/"{#if urlPath === '/docs/guide/'} aria-current="page"{/if}>Guide</a>
+  <a href="/docs/front-matter/"{#if urlPath === '/docs/front-matter/'} aria-current="page"{/if}>Front matter</a>
   <a href="/packages/"{#if urlPath === '/packages/'} aria-current="page"{/if}>Packages</a>
   <a href="/editors/"{#if urlPath === '/editors/'} aria-current="page"{/if}>Editors</a>
   <a href="/docs/migrating-from-yaml/"{#if urlPath === '/docs/migrating-from-yaml/'} aria-current="page"{/if}>Migrating from YAML</a>

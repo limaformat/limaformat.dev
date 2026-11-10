@@ -5,7 +5,7 @@ that must already be true in the registries. Follow this order.
 
 ## Build & serve locally
 
-The site is built with [hadley](https://hadley.sh); its repository is not public yet. From `site/`:
+The site is built with [hadley](https://hadley.sh) ([repository](https://github.com/mkorun/hadley)). From `site/`:
 
 ```sh
 hadley dev              # build + file watcher at http://localhost:8000
@@ -24,8 +24,8 @@ it runs `theme/assets/images/logo-{light,dark}.svg` through svgo and derives
 
 Run from `site/`:
 
-- [ ] **Docs at their commit.** The three spec pages, the guide and the YAML
-      migration are `docs/` of the Lima repository at the commit `sources` in
+- [ ] **Docs at their commit.** The three spec pages, the guide, the
+      front-matter page and the YAML migration are `docs/` of the Lima repository at the commit `sources` in
       `config.lima` names, read from `~/dev/lima/monorepo`; a change is a commit
       there and a new `ref` here, never an edit here.
 - [ ] **Numbers from the Lima repository.** Every version, case count, word

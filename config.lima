@@ -33,7 +33,7 @@ highlighting:
 # theme/templates. hadley uses this only to order the "More pages" list in
 # llms.txt (falls back to alphabetical URL order without it).
 navigations:
-  main: [home, docs-guide, docs-lima-core-1.0-spec, docs-lima-references-2.0-spec, conformance, packages, editors, docs-migrating-from-yaml]
+  main: [home, docs-guide, docs-front-matter, docs-lima-core-1.0-spec, docs-lima-references-2.0-spec, conformance, packages, editors, docs-migrating-from-yaml]
 
 # The specifications and guides, from docs/ of the Lima repository at a
 # commit (docs: sources.md of hadley); their text is edited there, not here.
@@ -68,6 +68,11 @@ sources:
       guide:
         linktext: Guide
         description: A practical walkthrough of Lima syntax, the References Extension, resource limits, and the JavaScript/TypeScript API.
+        template: doc
+        type: page
+      front-matter:
+        linktext: Front matter
+        description: Lima for front matter — what you write, what a value is, and where Lima differs from YAML.
         template: doc
         type: page
       migrating-from-yaml:

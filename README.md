@@ -17,7 +17,7 @@ the normative text there wins: a correction to a specification belongs there, on
 
 ## Building
 
-The site is built with [hadley](https://hadley.sh), a static site generator whose repository is not public yet.
+The site is built with [hadley](https://hadley.sh), a static site generator ([repository](https://github.com/mkorun/hadley)).
 [DEPLOYING.md](DEPLOYING.md) has the commands and the checklist for a release.
 
 ## License
