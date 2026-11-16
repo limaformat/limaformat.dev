@@ -18,6 +18,7 @@ bun run run:references-2    # References 2.0 alone
 - A **byte-frozen Core 1.0.0 baseline** — count-pinned by a test and byte-protected by checked-in content-hash manifests so it cannot silently drift. Core 1.0 grew via additive errata revisions through 1.0.10; each added case carries a `since` marker and the baseline stays byte-identical.
 - A frozen suite for Lima Core 1.1, pinned the same way. It supersedes 8 Core 1.0 cases, which stay in the 1.0 baseline as they are.
 - A suite for Lima Core 1.2: keys in any script, and a case for every row of the table of what each kind of line does.
+- A suite for Lima Core 1.3: the comment boundary, bare keys after a comment, the tab separator, and the YAML forms strict mode rejects, each with the form that stays as it was.
 - Separate suites for Lima References 2.0 and 2.1, versioned independently and run on their own.
 - Every case has exactly one expectation kind: a successful **result**, a thrown **error**, or **warnings** alongside a result.
 - Case IDs are permanently stable and follow a fixed scheme:
